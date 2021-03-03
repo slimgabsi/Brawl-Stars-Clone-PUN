@@ -29,14 +29,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
         get { return _moveSpeed; }
         set { _moveSpeed = value; }
     }
-    private void Start()
+    private void Awake()
     {
         leftJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
         rightJoystick = GameObject.FindGameObjectWithTag("RightJoystick").GetComponent<Joystick>();
-        animator = GetComponentInChildren<Animator>();
-        MoveSpeed = 6;
-       
+        animator = GetComponentInChildren<Animator>(); 
     }
+
+    private void Start()
+    {
+        MoveSpeed = 6; 
+    }
+
     private void FixedUpdate()
     {
        
@@ -58,7 +62,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             playerMvtSprite.gameObject.SetActive(false);
             animator.SetBool("Run", false);
-           }
+        }
         else
         {
             animator.SetBool("Run", true);
